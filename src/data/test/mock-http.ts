@@ -1,42 +1,18 @@
 import { HttpPostClient, HttpPostParams } from "@/data/protocols/http/http-client"
+import { HttpResponse, HttpStatusCode } from "@/data/protocols/http/http-response"
 
 export class HttpPostClientSpy implements HttpPostClient {
   url? : string
   body?: object
+  response: HttpResponse = {
+    statusCode: HttpStatusCode.noContent
+  }
 
-  post(params: HttpPostParams): Promise<void> {
+  post(params: HttpPostParams): Promise<HttpResponse> {
     this.url = params.url
     this.body = params.body
 
-    return Promise.resolve()
+    return Promise.resolve(this.response)
   }
 
 }
-// import { HttpRequest, HttpResponse, HttpStatusCode, HttpClient } from '@/data/protocols/http'
-// import faker from 'faker'
-
-// export const mockHttpRequest = (): HttpRequest => ({
-//   url: faker.internet.url(),
-//   method: faker.random.arrayElement(['get', 'post', 'put', 'delete']),
-//   body: faker.random.objectElement(),
-//   headers: faker.random.objectElement()
-// })
-
-// export class HttpClientSpy<R = any> implements HttpClient<R> {
-//   url?: string
-//   method?: string
-//   body?: any
-//   headers?: any
-//   response: HttpResponse<R> = {
-//     statusCode: HttpStatusCode.ok
-//   }
-
-//   async request (data: HttpRequest): Promise<HttpResponse<R>> {
-//     this.url = data.url
-//     this.method = data.method
-//     this.body = data.body
-//     this.headers = data.headers
-//     return this.response
-//   }
-// }
-
