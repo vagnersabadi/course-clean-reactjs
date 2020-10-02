@@ -3,5 +3,6 @@
         "activityBar.background": "#58122C",
         "titleBar.activeBackground": "#7B1A3E",
         "titleBar.activeForeground": "#FEFBFC"
-    }
+    },
+    "vue3snippets.enable-compile-vue-file-on-did-save-code": false
 }
